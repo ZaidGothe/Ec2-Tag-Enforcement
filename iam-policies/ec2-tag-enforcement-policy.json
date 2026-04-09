@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyEC2WithoutRequiredTags",
+            "Effect": "Deny",
+            "Action": "ec2:RunInstances",
+            "Resource": "arn:aws:ec2:*:*:instance/*",
+            "Condition": {
+                "Null": {
+                    "aws:RequestTag/Name": "true",
+                    "aws:RequestTag/emailID": "true",
+                    "aws:RequestTag/phoneNo": "true",
+                    "aws:RequestTag/Place": "true"
+                }
+            }
+        }
+    ]
+}
